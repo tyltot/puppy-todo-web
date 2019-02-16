@@ -18,13 +18,13 @@ const TodoWrapper = styled.div`
   justify-content: flex-start;
   margin-left: ${props => props.isDesktop ? '1vw' : '0px'};
   margin-right: ${props => props.isDesktop ? '1vw' : '0px'};
-  overflow: auto;
-  max-height: 70vh;
+  overflow: auto !important;
+  max-height: calc(var(--view-height) - 30vh);
 `;
 
 const BodyWrapper = styled.div`
   background: #C5D5D6;
-  min-height: 85vh;
+  min-height: calc(var(--view-height) - 15vh);
   display: flex;
   flex-direction: column;
   padding-top: .5em;
@@ -36,7 +36,7 @@ const AppContainer = styled.div`
 `;
 
 const AppHeader = styled.div`
-    background-color: #FF9286;
+    background-color: var(--dark-pink);
     height: 15vh;
     width: inherit;
 `;

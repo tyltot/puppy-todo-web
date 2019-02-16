@@ -6,7 +6,7 @@ const Wrapper = styled.div`
     display: flex;
     flex: 1;
     flex-direction: column;
-    background: #FFDFCE;
+    background: var(--light-pink);
     padding: 2rem 1em;
     margin: .5em 1em;
     border-radius: 5%;
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const Text = styled.p`
-    color: #FF9286;
+    color: var(--dark-pink);
     font-size: 1em;
     text-align: left;
     max-height: 3em;

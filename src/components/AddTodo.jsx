@@ -6,7 +6,7 @@ const Wrapper = styled.div`
     display: flex;
     flex: 1;
     flex-direction: row;
-    background: #FFDFCE;
+    background: var(--light-pink);
     padding: 2em 1em;
     margin: .5em 1em;
     max-height: 3em;
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const Text = styled.textarea`
-    color: #FF9286;
+    color: var(--dark-pink);
     font-size: 1em;
     overflow: auto;
     min-width: 75vw;
@@ -29,7 +29,7 @@ const Text = styled.textarea`
 `;
 
 const Header = styled.h3`
-    color: #FF9286;
+    color: var(--dark-pink);
 `
 
 class AddTodo extends Component {

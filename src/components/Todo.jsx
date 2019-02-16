@@ -7,7 +7,7 @@ import GenericIcon from './GenericIcon';
 const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
-    background: #FFDFCE;
+    background: var(--light-pink);
     padding: .5em 1em;
     margin: .5em 1em;
     max-height: 3em;
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `;
 
 const Text = styled.p`
-    color: #FF9286;
+    color: var(--dark-pink);
     font-size: 1em;
     overflow: auto;
     min-width: 75vw;
