@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.2"
+    "react-form": "^3.5.6",
+    "react-scripts": "2.1.2",
+    "styled-components": "^3.4.9"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish-now": "now rm puppy-todo; now; now alias puppy-todo"
   },
   "eslintConfig": {
     "extends": "react-app"
