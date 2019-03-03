@@ -6,7 +6,7 @@ const StyledContainer = styled.label`
     display: block;
     position: relative;
     /* margin-bottom: 12px; */
-    margin-left: 12px;
+    /* margin-left: 12px; */
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;

@@ -18,7 +18,7 @@ const TodoWrapper = styled.div`
   justify-content: flex-start;
   margin-left: ${props => props.isDesktop ? '1vw' : '0px'};
   margin-right: ${props => props.isDesktop ? '1vw' : '0px'};
-  overflow: auto !important;
+  overflow-y: scroll !important;
   max-height: calc(var(--view-height) - 30vh);
 `;
 
@@ -28,6 +28,7 @@ const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: .5em;
+  overflow-x: hidden;
 `;
 
 const AppContainer = styled.div`

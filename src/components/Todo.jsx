@@ -10,7 +10,9 @@ const Wrapper = styled.div`
     background: var(--light-pink);
     padding: .5em 1em;
     margin: .5em 1em;
-    max-height: 3em;
+    margin-right: 8px;
+    min-height: 3em;
+    max-height: 5em;
     border-radius: 5%;
     align-items: center;
     align-content: space-between;
