@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import GenericIcon from './GenericIcon';
+import ButtonFactory from './ButtonFactory';
 
 const Wrapper = styled.div`
     display: flex;
@@ -13,7 +13,7 @@ const Wrapper = styled.div`
     margin-right: 8px;
     min-height: 3em;
     max-height: 5em;
-    border-radius: 5%;
+    border-radius: 15px;
     align-items: center;
     align-content: space-between;
 `;
@@ -34,9 +34,10 @@ class Todo extends Component {
         return (
             <Wrapper>
                 <Text>{value}</Text>
-                <GenericIcon
+                <ButtonFactory
                     name={'checkers'}
                     onChange={() => onChange(value)}
+                    size={'medium'}
                     type={'checkbox-circle'}
                 />
             </Wrapper>

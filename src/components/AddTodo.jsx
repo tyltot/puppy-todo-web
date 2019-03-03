@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     padding: 2em 1em;
     margin: .5em 1em;
     max-height: 3em;
-    border-radius: 5%;
+    border-radius: 15px;
     align-items: center;
     align-content: space-between;
 `;
@@ -38,7 +38,7 @@ class AddTodo extends Component {
             <div>
                 <Header>Bark! Bark! What do you have to do today?</Header>
                 <Wrapper>
-                    <Text onChange={this.props.handleChange}>
+                    <Text autofocus onChange={this.props.handleChange}>
                         {this.props.text}
                     </Text>
                 </Wrapper>

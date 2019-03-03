@@ -6,15 +6,14 @@ import Loader from './components/Loader';
 import AddTodo from './components/AddTodo';
 import BarkYouDidIt from './components/BarkYouDidIt';
 import Todo from './components/Todo';
-import GenericIcon from './components/GenericIcon';
+import ButtonFactory from './components/ButtonFactory';
 
 import LocalState from './state/LocalState';
 
 const TodoWrapper = styled.div`
   display: flex;
   flex: 1 0 auto;
-  flex-direction: column; /* hack for mobile */
-  /*flex-wrap: ${props => (props.isDesktop ? 'wrap' : 'nowrap')}; /* hack for mobile */
+  flex-direction: column;
   justify-content: flex-start;
   margin-left: ${props => props.isDesktop ? '1vw' : '0px'};
   margin-right: ${props => props.isDesktop ? '1vw' : '0px'};
@@ -56,18 +55,6 @@ const AppTitle = styled.h1`
 
 const ButtonWrapper = styled.footer`
     flex-shrink: 0;
-`;
-
-const StyledButton = styled.button`
-    display: inline-block;
-    width: 2em;
-    border: none;
-    background-color: #FF9286;
-    color: #FFDFCE;
-    padding: 6px 6px;
-    font-size: 2em;
-    cursor: pointer;
-    border-radius: 25%;
     margin-bottom: 1em;
     margin-top: .5em;
 `;
@@ -76,7 +63,6 @@ const FlexButtonWrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    
 `;
 
 class App extends Component {
@@ -123,33 +109,18 @@ class App extends Component {
         this.setState({page});
     }
 
-    render() {
-        console.log('state', this.state);
-        const {isDesktop, todos, page, currentTodo} = this.state;
-
-        const getPage = () => {
-            if (page === 'add') {
-                return <AddTodo text={currentTodo} handleChange={event => this.updateTodo(event.target.value)} updatePage={this.updatePage} />;
-            } else if (page === 'puppy') {
-                return <BarkYouDidIt />
-            } else if (page === 'list') {
-                return todos.map((todo, index) => <Todo key={index} isDesktop={isDesktop} value={todo} onChange={this.removeTodo} />);
-            } else {
-                console.error("wtf", page);
-            }
-        }
-
-        const getButton = () => {
-            if (page === 'add') {
-                return (
+    getButton = () => {
+        const {page} = this.state;
+        if (page === 'add') {
+            return (
                 <FlexButtonWrapper>
                     <br />
-                    <GenericIcon
+                    <ButtonFactory
                         name={'goBackButton'}
                         onChange={() => this.updatePage('list')}
                         type={'back-square'}
                     />
-                    <GenericIcon
+                    <ButtonFactory
                         name={'submitTodoButton'}
                         onChange={() => {
                             console.log('add event');
@@ -160,14 +131,40 @@ class App extends Component {
                     />
                     <br />
                 </FlexButtonWrapper>);
-            } else if (page === 'list') {
-                return <StyledButton onClick={e => this.updatePage('add')} type="button">+</StyledButton>
-            } else if (page === 'puppy')  {
-                return <GenericIcon name={'goBackButton'} onChange={event => this.updatePage('list')} type={'back-square'} />
-            } else {
-                // eh...
-            }
+        } else if (page === 'list') {
+            return (
+                <ButtonFactory
+                    name={'addButton'}
+                    onChange={() => this.updatePage('add')}
+                    type="add" />
+                );
+        } else if (page === 'puppy')  {
+            return (
+                <ButtonFactory
+                    name={'goBackButton'}
+                    onChange={() => this.updatePage('list')}
+                    type={'back-square'} 
+                />);
+        } else {
+            // eh...
         }
+    }
+
+    getPage = () => {
+        const {isDesktop, todos, page, currentTodo} = this.state;
+        if (page === 'add') {
+            return <AddTodo text={currentTodo} handleChange={event => this.updateTodo(event.target.value)} updatePage={this.updatePage} />;
+        } else if (page === 'puppy') {
+            return <BarkYouDidIt />
+        } else if (page === 'list') {
+            return todos.map((todo, index) => <Todo key={index} isDesktop={isDesktop} value={todo} onChange={this.removeTodo} />);
+        } else {
+            console.error("wtf", page);
+        }
+    }
+
+    render() {
+        const {isDesktop} = this.state;
 
         return (
             <AppContainer>
@@ -180,10 +177,10 @@ class App extends Component {
                 </AppHeader>
                 <BodyWrapper id={'bodyWrapper'}>
                     <TodoWrapper id={'todoWrapper'} isDesktop={isDesktop}>
-                        {getPage()}
+                        {this.getPage()}
                     </TodoWrapper>
                     <ButtonWrapper id={'buttonWrapper'}>
-                        {getButton()}
+                        {this.getButton()}
                     </ButtonWrapper>
                 </BodyWrapper>
             </AppContainer>
