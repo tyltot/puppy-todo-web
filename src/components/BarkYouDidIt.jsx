@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
 const Text = styled.p`
     color: var(--dark-pink);
-    font-size: 1em;
+    font-size: 1.5em;
     text-align: left;
     max-height: 3em;
     background: inherit;
